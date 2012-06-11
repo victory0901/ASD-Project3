@@ -1,0 +1,69 @@
+/*
+ASD Project 1
+James Floyd II 
+June 1, 2012
+*/
+
+h1{
+	color: #2f5e2f;
+	font-style: italic;
+}
+
+h2{ 
+	text-align: center;
+	font-style: italic;
+	outline: red solid;
+	color: white;
+	padding: 20px;
+	margin: 20px;
+}
+
+li{
+	font-family: "Times New Roman", Times, serif;
+	color: white;
+}
+
+
+body {
+    background: url(images/grey.jpeg);
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%;
+}
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+
+legend{
+	color: red;	
+	font-weight: bold;
+}
+
+input{
+	color: red;
+}
+
+a{
+	font-weight: bold;	
+}
+
+nav{
+	color: red;
+	text-indent: 50px;
+}
+
+p{ 
+	color: #753B3B;
+}
+
+label.error{
+	display: block; margin: 10px 0; color: red;
+}
+
+#aierrorslink{
+	display: none;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <Gifts>
+    <present>
+        <group>Family</group>
+        <fname>James</fname>
+        <lname>Floyd</lname>
+        <gift>Apple iPad 3</gift>
+        <quantity>1</quantity>
+        <purchase>store</purchase>
+        <buydate>2012-12-15</buydate>
+        <notes>XML Data</notes>
+    </present>
+    <present>
+        <group>Non-Family</group>
+        <fname>Amber</fname>
+        <lname>Jones</lname>
+        <gift>Wii U</gift>
+        <quantity>1</quantity>
+        <purchase>online</purchase>
+        <buydate>2012-12-20</buydate>
+        <notes>XML Data</notes>
+    </present>
+    <present>
+        <group>Non-Family</group>
+        <fname>Robert</fname>
+        <lname>Torres</lname>
+        <gift>iPod Dock</gift>
+        <quantity>1</quantity>
+        <purchase>store</purchase>
+        <buydate>2012-12-18</buydate>
+        <notes>XML Data</notes>
+    </present>
+    <present>
+        <group>Non-Family</group>
+        <fname>Jay</fname>
+        <lname>Liebler</lname>
+        <gift>BOSD Tattoo</gift>
+        <quantity>2</quantity>
+        <purchase>store</purchase>
+        <buydate>2012-12-18</buydate>
+        <notes>XML Data</notes>
+    </present>
+    <present>
+        <group>Non-Family</group>
+        <fname>Anthony</fname>
+        <lname>Roberts</lname>
+        <gift>Blu Ray</gift>
+        <quantity>1</quantity>
+        <purchase>online</purchase>
+        <buydate>2012-12-19</buydate>
+        <notes>XML Data</notes>
+    </present>
+
+</Gifts> 
