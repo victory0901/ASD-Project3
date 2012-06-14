@@ -1,29 +1,252 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My New CouchApp</title>
-    <link rel="stylesheet" href="style/main.css" type="text/css">
-  </head>
-  <body>
-    <div id="account"></div>
+<!doctype html>  
+<html lang="en">
 
-    <h1>Generated CouchApp</h1>
+<!--
+ASD Project 2
+James Floyd II 
+June 7, 2012
+-->
 
-    <div id="profile"></div>
-    <div id="items"></div>
+<head>
 
-    <div id="sidebar">
-      <p>Edit welcome message.</p>
-      <p>Ideas: You could easily turn this into a photo sharing app, or a grocery list, or a chat room.</p>
-    </div>
-  </body>
-  <script src="vendor/couchapp/loader.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    $.couch.app(function(app) {
-      $("#account").evently("account", app);
-      $("#profile").evently("profile", app);
-      $.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
-      $("#items").evently("items", app);
-    });
-  </script>
+	<meta charset="utf-8">
+	
+	<title>Christmas List App</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+	
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" href="css/styles.css"/>
+	<style type="text/css">
+		body {
+    		background: url(images/grey.jpeg);
+   		 	background-repeat:repeat-y;
+    		background-position:center center;
+    		background-attachment:scroll;
+    		background-size:100% 100%;
+			}
+		.ui-page {
+    		background: transparent;
+			}
+		.ui-content{
+    		background: transparent;
+			}
+	</style>
+	
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+
+</head>
+	<body>
+		<div data-role="page" id="home" data-theme="d">
+			<div data-role="header" data-position="fixed" data-theme="d">
+				
+				<h1><img  src="images/logo.png" /> Christmas List</h1>
+			</div> <!-- Header ends -->
+			
+			<div class="ui-bar">
+			<a href="additem.html" data-ajax="false" >
+				<img  src="images/Call_To_Action.png" /> 
+			</a>
+			</div> <!-- Call to Action ends -->
+			
+			<p>This app allows you to create a shopping list for Christmas gifts!</p> 
+			
+			<ul id="giftlist" data-role="listview"></ul>
+				
+			<br />
+			
+			<div data-role="content">
+				<ul data-role="listview" data-filter="true"  data-theme="c"> <!-- Search -->
+					<li data-role="list-divider"  data-theme="c">Browse</li>
+					<li><a href="#gift">Browse Gifts</a></li>
+					<li><a href="#fname">Browse by First Name</a></li>
+					<li><a href="#lname">Browse by Last Name</a></li>
+					<li><a href="#family">Browse Family</a></li>
+					<li><a href="#nonfamily">Browse Non-Family</a></li>
+				</ul>
+			</div> <!-- Browse Categories ends -->
+			
+			<div data-role="footer" data-position="fixed">		
+				<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="http://victory0901.github.com/ASD-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+				</div><!-- Navbar ends -->
+			</div><!-- Footer ends -->
+		</div> <!-- Home Page Ends -->
+		
+		
+		
+		
+		<div data-role="page" id="gift" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed">
+				<h1>Browse Gifts</h1>
+			</div>
+		
+			<div data-role="content">
+				<div class="ui-grid-b">
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/electronics.jpg" />Electronics</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/clothing.jpg" />Clothing</div></div>
+					<div class="ui-block-c"><div class="ui-bar"><img  src="images/giftcard.jpg" />Gift Cards</div></div>
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/appliances.jpg" />Appliances</div></div>
+				</div>
+			
+			
+			
+<!-- 			<ul data-role="listview">
+					<li>Electronics</li>
+					<li>Clothing</li>
+					<li>Gift Cards</li>
+					<li>Appliances</li>
+				</ul>  -->	
+			</div>
+			
+			<div data-role="footer" data-position="fixed">		
+				<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="http://victory0901.github.com/ASD-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+				</div><!-- Navbar ends -->
+			</div><!-- Footer ends -->
+		</div> <!-- Gift Page ends -->
+		
+		<div data-role="page" id="fname" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed">
+				<h1>Browse by First Name</h1>
+			</div>
+		
+			<div data-role="content">
+				<div class="ui-grid-b">
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/A-F.png" />A-F</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/G-M.png" />G-M</div></div>
+					<div class="ui-block-c"><div class="ui-bar"><img  src="images/N-S.png" />N-S</div></div>
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/T-Z.png" />T-Z</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/All.png" />All Names</div></div>
+				</div>
+						
+<!--				<ul data-role="listview">
+					<li>A-F</li>
+					<li>G-M</li>
+					<li>N-S</li>
+					<li>T-Z</li>
+					<li>All Names</li>
+				</ul> -->
+			</div>
+			
+			<div data-role="footer" data-position="fixed">		
+				<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="http://victory0901.github.com/ASD-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+				</div><!-- Navbar ends -->
+			</div><!-- Footer ends -->
+		</div> <!-- FirstName Page ends -->
+		
+		<div data-role="page" id="lname" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed">
+				<h1>Browse by Last Name</h1>
+			</div>
+		
+			<div data-role="content">
+				<div class="ui-grid-b">
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/A-F.png" />A-F</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/G-M.png" />G-M</div></div>
+					<div class="ui-block-c"><div class="ui-bar"><img  src="images/N-S.png" />N-S</div></div>
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/T-Z.png" />T-Z</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/All.png" />All Names</div></div>
+				</div>
+			
+<!--				<ul data-role="listview">
+					<li>A-F</li>
+					<li>G-M</li>
+					<li>N-S</li>
+					<li>T-Z</li>
+					<li>All Names</li>
+				</ul>	-->
+			</div>
+			
+			<div data-role="footer" data-position="fixed">		
+				<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="http://victory0901.github.com/ASD-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+				</div><!-- Navbar ends -->
+			</div><!-- Footer ends -->
+		</div> <!-- LastName Page ends -->
+		
+		<div data-role="page" id="family" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed">
+				<h1>Browse Family</h1>
+			</div>
+		
+			<div data-role="content">
+				<div class="ui-grid-b">
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/parents.png" />Parents</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/children.jpg" />Children</div></div>
+					<div class="ui-block-c"><div class="ui-bar"><img  src="images/aunts.jpg" />Aunts/Uncles</div></div>
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/siblings.jpg" />Siblings</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/cousins.jpg" />Cousins</div></div>
+				</div>
+			
+			</div>
+			
+			<div data-role="footer" data-position="fixed">		
+				<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="http://victory0901.github.com/ASD-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+				</div><!-- Navbar ends -->
+			</div><!-- Footer ends -->
+		</div> <!-- Family Page ends -->
+		
+		<div data-role="page" id="nonfamily" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed">
+				<h1>Browse Non-Family</h1>
+			</div>
+		
+			<div data-role="content">
+				<div class="ui-grid-b">
+					<div class="ui-block-a"><div class="ui-bar"><img  src="images/friends.jpg" />Friends</div></div>
+					<div class="ui-block-b"><div class="ui-bar"><img  src="images/co-workers.jpg" />Co-Workers</div></div>
+					<div class="ui-block-c"><div class="ui-bar"><img  src="images/others.jpg" />Others</div></div>
+				</div>
+			
+<!--				<ul data-role="listview">
+					<li>Friends</li>
+					<li>Co-Workers</li>
+					<li>Other</li>
+				</ul>	-->
+			</div>
+			
+			<div data-role="footer" data-position="fixed">		
+				<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="http://victory0901.github.com/ASD-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+				</div><!-- Navbar ends -->
+			</div><!-- Footer ends -->
+		</div> <!-- Non-Family Page ends -->
+		
+	<!-- JavaScript under here -->
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="jquery.couch.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="js/main2.js"></script>
+	</body>
 </html>

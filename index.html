@@ -59,12 +59,7 @@ June 7, 2012
 			
 			<p>This app allows you to create a shopping list for Christmas gifts!</p> 
 			
-			<p>Below are AJAX examples of JSON, XML and CSV.</p>
-				<ul>
-					<li><a href="#" data-role="button" id="jsonButt">JSON</a></li>
-					<li><a href="#" data-role="button" id="xmlButt" >XML</a></li>
-					<li><a href="#" data-role="button" id="csvButt">CSV</a></li>					
-				</ul>
+			<ul id="giftlist" data-role="listview"></ul>
 			
 			<div id="jsonlist" data-role="listview"> 	<!-- JSON List -->
 				<p>JSON Goes Here!</p>
@@ -217,13 +212,6 @@ June 7, 2012
 					<div class="ui-block-b"><div class="ui-bar"><img  src="images/cousins.jpg" />Cousins</div></div>
 				</div>
 			
-<!--				<ul data-role="listview">
-					<li>Parents</li>
-					<li>Children</li>
-					<li>Aunts/Uncles</li>
-					<li>Siblings</li>
-					<li>Cousins</li>
-				</ul>	-->
 			</div>
 			
 			<div data-role="footer" data-position="fixed">		
@@ -269,6 +257,7 @@ June 7, 2012
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="jquery.couch.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/main2.js"></script>
 	</body>
