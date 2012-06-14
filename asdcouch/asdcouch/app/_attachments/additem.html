@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!--
+ASD Project 2
+James Floyd II 
+June 7, 2012
+-->
+<head>
+
+	<meta charset="utf-8">
+	
+	<title>Christmas List App</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+	
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" href="styles.css"/>
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.min.css" /> 
+	<style type="text/css">
+		body {
+    		background: url(grey.jpeg);
+    		background-repeat:repeat-y;
+    		background-position:center center;
+    		background-attachment:scroll;
+    		background-size:100% 100%;
+			}
+		.ui-page {
+    		background: transparent;
+			}
+		.ui-content{
+    		background: transparent;
+			}
+	</style>
+
+	
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+</head>
+	<body>
+	
+	<div data-role="page" id="additem" data-add-back-btn="true" data-theme="c">
+		
+		<div data-role="header" data-position="fixed" data-theme="c">
+			<h1><img  src="logo.png" /> Add Gift</h1>
+		</div>
+		
+		<div data-role="fieldcontain">
+					<input type="submit" value="Add Gift" data-theme="b" />
+		</div>
+		
+		<div data-role="content">
+			
+			<form action="" method="post" id="additemform">
+				
+				<div data-role="fieldcontain">
+					<label for="firstname">First Name</label>
+					<input type="text" name="firstname" id="firstname" class="required" placeholder="Johnny"/>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="lastname">Last Name</label>
+					<input type="text" name="lastname" id="lastname" class="required" placeholder="Appleseed" />
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="gift">Gift</label>
+					<input type="text" name="gift" id="gift" class="required" />
+					<p>Enter name of gift here</p>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="quantity">Quantity</label>
+					<input type="range" name="quantity" value="1" min="0" max="50" />
+				</div>
+				
+				<div data-role="fieldcontain">
+					<fieldset data-role="controlgroup">
+						<legend>Where to buy?</legend>
+						<input type="checkbox" value="Store" name="store" id="store" />
+						<label for="store">Store</label>
+						<input type="checkbox" value="Online" name="online" id="online" checked="true"/>
+						<label for="online">Online</label>
+					</fieldset>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="mydate">Buy gift by:</label>
+					<input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "calbox"}' class="required" placeholder="4/19/2012">
+				</div>
+				
+				
+				<div data-role="fieldcontain">
+					<label for="notes">Notes:</label>
+					<textarea>Enter additional notes here...</textarea>
+				</div>			
+				
+				<div data-role="fieldcontain">
+					<input type="reset" value="Clear" data-theme="e" />
+				</div>
+				
+				<div>
+					<nav>
+						<a href="#" data-ajax="false" id="clear">Clear Stored Data</a>
+						<a href="#" data-ajax="false" id="displayLink">Display Data</a>
+					<a href="additem.html" data-role="button" data-mini="true" id="addNew" style="display:none;">Add New Item</a>
+					</nav>
+				</div>
+				
+				<a href="#additemerrors" id="aierrorslink" data-rel="dialog" data-transition="pop">Open Errors</a>
+			
+			</form>
+		</div> <!-- Content Ends -->
+		
+		<div data-role="footer" data-position="fixed">		
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-role="button" data-icon="home" data-ajax="false" >Home</a></li>
+					<li><a href="../bronze/index.html" data-role="button" data-icon="star" data-ajax="false" >Bronze App</a></li>
+					<li><a href="http://victory0901.github.com/MIU-Project2" data-role="button" data-icon="info">GH-Pages</a></li>
+				</ul>
+			</div><!-- Navbar ends -->
+		</div><!-- Footer ends -->
+		</div> <!-- Add Item Form ends -->
+	
+	
+	
+	<div data-role="dialog" id="additemerrors" >
+		
+		<div data-role="header" data-position="fixed">
+			<h1>Missing Fields</h1>
+		</div>
+		
+		<div data-role="content">
+			<ul>
+				<li>Test.</li>
+			</ul>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+<!--
+		<h1>Christmas Shopping List</h1>
+		<nav>
+			<a href="#" id="clear">Clear Stored Data</a>
+			<a href="#" id="displayLink">Display Data</a>
+			<a href="additem.html" id="addNew" style="display:none;">Add New Item</a>
+		</nav>
+		<form action="#" method="post" id="contactForm" >
+			<fieldset>
+				<legend>Add Gift</legend>
+				<ul id="errors"></ul>
+				<ul>
+					<li><label for="fname">First Name:</label><input type="text" id="fname" /></li>
+					<li><label for="lname">Last Name:</label><input type="text" id="lname" /></li>
+					<li><label for="gift">Gift:</label><input type="text" id="gift" /></li>
+					<li><label for="quantity">Quantity</label><input type="range" min="1" max="10" name="quantity" type="range" id="quantity"/></li>
+					<li><label for="purchase">Where to purchase?: </label>
+						<ul>
+							<li><input type="radio" checked value="online" id="online" name="local" /><label for="online">Online</label></li>
+							<li><input type="radio" value="store" id="store" name="local" /><label for="store">Store</label></li>
+						</ul>
+					</li>
+					<li id="select"><label for="group">Relationship:</label></li>
+					</li>
+					<li><label for="buydate">Buy gift by:</label><input type="date" min="2012-01-05" max="2012-12-24" id="buydate" name="buydate" required aria-required="true"/></li>
+					<li><label for="notes">Additional Notes:</label><textarea id="notes"></textarea></li>
+				</ul>
+			</fieldset>
+			<input type="submit" value="Finish" id="submit"/>
+		</form>
+		
+		
+	<!-- JavaScript under here -->
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i8n/jquery.mobile.datebox.i8n.en.js"></script>
+	<script type="text/javascript" src="jquery.validate.min.js"></script>
+	<script type="text/javascript" src="jquery.couch.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
+
+
+
+

@@ -1,7 +1,10 @@
 {
   "env": {
     "local": {
-      "db": "http://127.0.0.1:5984/asdproject"
+    	"db": "http://127.0.0.1:5984/asdproject"
+      },
+      "cloundant": {
+      	"db": "https://regranseddightioncestedr:4Enu8VOC1lVM73apTjyhTVHv@jfloyd.cloudant.com/asdproject"
     }
   }
 }
