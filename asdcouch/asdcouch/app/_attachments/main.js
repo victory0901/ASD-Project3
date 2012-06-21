@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 	console.log("I am ready");
 	
 	$.ajax({
@@ -38,7 +38,7 @@ var parseAddGiftForm = function(data){
 	console.log(data);
 };
 
-$('#additemform').on('pageinit', function(){
+/* $('#additemform').on('pageinit', function(){ */
 
 
     var aiform = $('#additemform'),
@@ -63,12 +63,12 @@ $('#additemform').on('pageinit', function(){
             storeData(key);
         }
     });
-});
 
-/*
 
-//Wait for DOM to be ready
-window.bind("DOMContentLoaded", function(){
+	/*
+
+	//Wait for DOM to be ready
+	window.bind("DOMContentLoaded", function(){
 
 	//getElementById Function
 	function $(x){
@@ -91,7 +91,7 @@ window.bind("DOMContentLoaded", function(){
 		selectLi.append(makeSelect);
 	}
 	
-*/
+	*/
 	
 	//Find the value of selected radio button
 	function getSelectedRadio(){
@@ -355,7 +355,7 @@ window.bind("DOMContentLoaded", function(){
 		}
 	}
 	
-*/
+	
 	
 	 //Variable Defaults
 	var contactGroups = ["--Choose A Group--", "Family", "Non-Family"],
@@ -363,6 +363,8 @@ window.bind("DOMContentLoaded", function(){
 		errMsg = $("errors");
 	;
 	makeCats();
+	
+	*/
 
 	//Set Link & Submit Click Events
 	var displayLink =  $("#displayLink");
@@ -370,8 +372,8 @@ window.bind("DOMContentLoaded", function(){
 	var clearLink = $("#clear");
 	clearLink.bind("click", clearLocal); 
 	var save = $("#submit");
-	save.bind("click", validate);
-});
+//	save.bind("click", validate);
+
 
 
 
