@@ -58,12 +58,12 @@ $('#additemform').on('pageinit', function(){
             $("#additemerrors ul").html(html);
         },
         submitHandler: function(){
-            var data = aiform.serializeArray();
-            parseAddGiftForm(data);
+ //           var data = aiform.serializeArray();
+//            parseAddGiftForm(data);
             storeData(key);
         }
     });
-
+});
 
 /*
 
@@ -216,7 +216,9 @@ window.bind("DOMContentLoaded", function(){
 		editLink.key = key;
 		
 		var editText = "Edit Gift ";
-		editLink.bind("click", editItem);
+		$(editLink).bind("click", function(){
+			editItem(key);
+		});
 		editLink.html = editText; 
 		linksLi.append(editLink);
 		
@@ -224,8 +226,11 @@ window.bind("DOMContentLoaded", function(){
 		var deleteLink = $("a");
 		deleteLink.href = "#";
 		deleteLink.key = key;
+		
 		var deleteText = "Delete Gift";
-		deleteLink.bind("click", deleteItem);
+		$(deleteLink).bind("click", function(){
+			deleteItem(key);
+		});
 		deleteLink.html = deleteText;
 		linksLi.append(deleteLink);
 	}
@@ -259,8 +264,10 @@ window.bind("DOMContentLoaded", function(){
 
 		$("submit").val() = "Edit Contact";
 		var editSubmit = $("submit");
-
-		editSubmit.bind("click", validate);
+		$(editSubmit).on("click", function(){
+			storeData(key);
+			return false;		
+		});	
 		editSubmit.key = this.key;
 	}
 	
