@@ -200,11 +200,11 @@ var parseAddGiftForm = function(data){
 	function autoFillData() {
 		//The actual JSON JOBKJECT data required for this to work is coming from our json.js file, which is laoaded from our HTML page.
 		//Store the JSON OBJECT in local storage.
-		for(var n in json) {
+/*		for(var n in json) {
 			var id = Math.floor(Math.random()*10000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
-		}
-	}
+		} */
+	} 
 	
 	//Make Item Links
 	//Creat the edit and delete links for each stored item when displayed
