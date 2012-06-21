@@ -169,11 +169,13 @@ window.bind("DOMContentLoaded", function(){
 			makeList.append(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
+			
 			//Convert a string from local storage value back to an object by using JSON.parse
 			var obj = JSON.parse(value);
 			var makeSubList = $("ul");
 			makeLi.append(makeSubList);
 			getImage(obj.group[1], makeSubList);
+			
 			for(var n in obj){
 				var makeSubLi = $("li");
 				makeSubList.append(makeSubLi);
@@ -207,10 +209,12 @@ window.bind("DOMContentLoaded", function(){
 	//Make Item Links
 	//Creat the edit and delete links for each stored item when displayed
 	function makeItemLinks(key, linksLi){
+		
 		//add edit single item link
 		var editLink = $("a");
 		 editLink.href = "#";
 		editLink.key = key;
+		
 		var editText = "Edit Gift ";
 		editLink.bind("click", editItem);
 		editLink.html = editText; 
