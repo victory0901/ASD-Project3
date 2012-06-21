@@ -38,7 +38,7 @@ var parseAddGiftForm = function(data){
 	console.log(data);
 };
 
-/* $('#additemform').on('pageinit', function(){ */
+$('#additemform').bind('pageinit', function(){ 
 
 
     var aiform = $('#additemform'),
@@ -63,35 +63,8 @@ var parseAddGiftForm = function(data){
             storeData(key);
         }
     });
+});
 
-
-	/*
-
-	//Wait for DOM to be ready
-	window.bind("DOMContentLoaded", function(){
-
-	//getElementById Function
-	function $(x){
-		var theElement = document.getElementById(x);
-		return theElement;
-	}
-	//Create select field element and populate with options
-	function makeCats(){
-		var formTag = document.getElementsByTagName("form"), //formTag is an array of all forms
-			selectLi= $("select"),
-			makeSelect = $("select");
-			makeSelect.attr("id", "groups");
-		for(var i=0, j=contactGroups.length; i<j; i++){
-			var makeOption = $("option");
-			var optText = contactGroups[i];
-			makeOption.attr("value", optText);
-			makeOption.html = optText;
-			makeSelect.append(makeOption);
-		}	
-		selectLi.append(makeSelect);
-	}
-	
-	*/
 	
 	//Find the value of selected radio button
 	function getSelectedRadio(){
@@ -129,7 +102,7 @@ var parseAddGiftForm = function(data){
 		var id  		= Math.floor(Math.random()*10000001);
 	}else {
 		//Set the id to the existing key we're editing so that it will save over the data.
-		//The key is the same key that's been passed along from the editSubmit envent handler
+		//The key is the same key that's been passed along from the editSubmit event handler
 		//To the validate function, and then passed here, into the storeData function.
 		id = key;
 	}
@@ -143,6 +116,7 @@ var parseAddGiftForm = function(data){
 		item.purchase	= ["Where to Buy:", purchaseValue]; 
 		item.buydate	= ["Buy Date:", $("buydate").val()];
 		item.notes		= ["Notes:", $("notes").val()];
+		
 		//Save data into Local Storage: Use Stringify to convert our object
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Contact Saved!");
@@ -163,7 +137,7 @@ var parseAddGiftForm = function(data){
 		
 		var makeList = $("ul");
 		makeDiv.append(makeList);
-		document.body.append(makeDiv);
+//		document.body.append(makeDiv);
 		$("items").css("display","block");
 		
 		for(var i=0, len=localStorage.length; i<len; i++){
@@ -215,7 +189,7 @@ var parseAddGiftForm = function(data){
 		
 		//add edit single item link
 		var editLink = $("a");
-		 editLink.href = "#";
+		 editLink.prop("href","#");
 		editLink.key = key;
 		
 		var editText = "Edit Gift ";
@@ -227,7 +201,7 @@ var parseAddGiftForm = function(data){
 		
 		//add delete single item link
 		var deleteLink = $("a");
-		deleteLink.href = "#";
+		deleteLink.prop("href", "#");
 		deleteLink.key = key;
 		
 		var deleteText = "Delete Gift";
