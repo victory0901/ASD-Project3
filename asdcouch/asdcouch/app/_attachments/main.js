@@ -156,13 +156,16 @@ var parseAddGiftForm = function(data){
 			alert("There is no data in local storage, so default data was added.");
 			autoFillData();
 		}
+		
 		//Write Data from Local Storage to the browser.
 		var makeDiv = $("div");
 		makeDiv.attr("id", "items");
+		
 		var makeList = $("ul");
 		makeDiv.append(makeList);
 		document.body.append(makeDiv);
 		$("items").css("display","block");
+		
 		for(var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = $("li");
 			var linksLi = $("li");
