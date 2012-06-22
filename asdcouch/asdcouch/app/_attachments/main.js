@@ -1,8 +1,7 @@
 $(function(){
 	console.log("I am ready");
 	
-    var aiform = $('#additemform');
-    var aierrorslink = $('#aierrorslink');
+    
 
 	
 	//Find the value of selected radio button
@@ -120,7 +119,7 @@ $(function(){
 /*		for(var n in json) {
 			var id = Math.floor(Math.random()*10000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
-		} */
+		} */ //Causes an error
 		$.ajax({
 			"url": "_view/gifts",
 			"dataType": "json",
@@ -154,7 +153,7 @@ $(function(){
 	} 
 	
 	//Make Item Links
-	//Creat the edit and delete links for each stored item when displayed
+	//Create the edit and delete links for each stored item when displayed
 	function makeItemLinks(key, linksLi){
 		
 		//add edit single item link
@@ -239,6 +238,8 @@ $(function(){
 			return false;
 		}
 	}
+	var aiform = $('#additemform');
+    var aierrorslink = $('#aierrorslink');
 	
     aiform.validate({
         invalidHandler: function(form, validator){
@@ -263,7 +264,7 @@ $(function(){
 	var clearLink = $("#clear");
 		clearLink.bind("click", clearLocal); 
 	var save = $("#submit");
-	//	save.bind("click", validate);
+	//Notworking	save.bind("click", validate);
 	
 });
 
