@@ -43,18 +43,18 @@ June 21, 2012
 
 	
 	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
-	<script src="js/libs/modernizr.custom.min.js"></script>
+	<script src="modernizr.custom.min.js"></script>
 </head>
 	<body>
 	
-	<div data-role="page" id="additem" data-add-back-btn="true" data-theme="c">
+	<div data-role="page" id="additem" data-add-back-btn="true" data-ajax="false" data-theme="c">
 		
 		<div data-role="header" data-position="fixed" data-theme="c">
 			<h1><img  src="logo.png" /> Add Gift</h1>
 		</div>
 		
 		<div data-role="fieldcontain">
-					<input type="submit" value="Add Gift" data-theme="b" />
+					<input type="submit" id="submit" value="Add Gift" data-theme="b" />
 		</div>
 		
 		<div data-role="content">
@@ -140,7 +140,7 @@ June 21, 2012
 		
 		<div data-role="content">
 			<ul>
-				<li>Test.</li>
+			
 			</ul>
 		</div>
 	</div>

@@ -1,69 +1,8 @@
 $(function(){
 	console.log("I am ready");
 	
-	$.ajax({
-		"url": "_view/gifts",
-		"dataType": "json",
-		"success": function(data){
-			$.each(data.rows, function(index, gift){
-				var group = gift.value.group[1]; 
-				var fname = gift.value.fname[1];
-				var lname = gift.value.lname[1];
-				var giftx = gift.value.gift[1];	
-				var quantity = gift.value.quantity[1];
-				var purchase = gift.value.purchase[1];
-				var buydate = gift.value.buydate[1];
-				var notes = gift.value.notes[1];  
-				$(''+
-                        '<ul>' +
-                        '<li>'+ 'Group: ' + group + '</li>' +
-                        '<li>'+ 'Name: ' + fname + " " + lname +'</li>'+
-                        '<li>'+ 'Gift: ' + giftx +'</li>'+	
-                        '<li>'+ 'Quantity: ' + quantity +'</li>'+
-                        '<li>'+ 'Purchase: ' + purchase +'</li>'+
-                        '<li>'+ 'Buy Date: ' + buydate +'</li>'+
-                        '<li>'+ 'Notes: ' + notes +'</li>'+ 
-                        '</ul>'	+ '<br />'
-                     ).appendTo('#giftlist');
-				console.log(data);
-				
-			});
-			$("#giftlist").listview("refresh");
-		}
-	});
-}); 
-
-var parseAddGiftForm = function(data){
-	// uses form data here;
-	console.log(data);
-};
-
-$('#additemform').bind('pageinit', function(){ 
-
-
-    var aiform = $('#additemform'),
-        aierrorslink = $('#aierrorslink')
-    ;
-
-    aiform.validate({
-        invalidHandler: function(form, validator){
-            aierrorslink.click();
-            var html = '';
-            for(var key in validator.submitted){
-                var label = $('label[for^="'+ key +'"]').not('[generated]');
-                var legend = label.closest('fieldset').find('.ui-controlgroup-label');
-                var fieldName = legend.length ? legend.text() : label.text();
-                html += '<li>'+ fieldName +'</li>';
-            };
-            $("#additemerrors ul").html(html);
-        },
-        submitHandler: function(){
- //           var data = aiform.serializeArray();
-//            parseAddGiftForm(data);
-            storeData(key);
-        }
-    });
-});
+    var aiform = $('#additemform');
+    var aierrorslink = $('#aierrorslink');
 
 	
 	//Find the value of selected radio button
@@ -137,13 +76,14 @@ $('#additemform').bind('pageinit', function(){
 		
 		var makeList = $("ul");
 		makeDiv.append(makeList);
-//		document.body.append(makeDiv);
+		$("body").append(makeDiv);
 		$("items").css("display","block");
 		
 		for(var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = $("li");
 			var linksLi = $("li");
 			makeList.append(makeLi);
+			
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			
@@ -157,7 +97,7 @@ $('#additemform').bind('pageinit', function(){
 				var makeSubLi = $("li");
 				makeSubList.append(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubLi.append(optSubText);
+				makeSubLi.html(optSubText);
 				makeSubList.append(linksLi);
 			}
 			makeItemLinks(localStorage.key(i), linksLi);  //Create our edit and delete buttons/links for each item in Local Storage
@@ -181,6 +121,36 @@ $('#additemform').bind('pageinit', function(){
 			var id = Math.floor(Math.random()*10000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
 		} */
+		$.ajax({
+			"url": "_view/gifts",
+			"dataType": "json",
+			"success": function(data){
+				$.each(data.rows, function(index, gift){
+					var group = gift.value.group[1]; 
+					var fname = gift.value.fname[1];
+					var lname = gift.value.lname[1];
+					var giftx = gift.value.gift[1];	
+					var quantity = gift.value.quantity[1];
+					var purchase = gift.value.purchase[1];
+					var buydate = gift.value.buydate[1];
+					var notes = gift.value.notes[1];  
+					$(''+
+	                        '<ul>' +
+	                        '<li>'+ 'Group: ' + group + '</li>' +
+	                        '<li>'+ 'Name: ' + fname + " " + lname +'</li>'+
+	                        '<li>'+ 'Gift: ' + giftx +'</li>'+	
+	                        '<li>'+ 'Quantity: ' + quantity +'</li>'+
+	                        '<li>'+ 'Purchase: ' + purchase +'</li>'+
+	                        '<li>'+ 'Buy Date: ' + buydate +'</li>'+
+	                        '<li>'+ 'Notes: ' + notes +'</li>'+ 
+	                        '</ul>'	+ '<br />'
+	                     ).appendTo('#giftlist');
+					console.log(data);
+					
+				});
+				$("#giftlist").listview("refresh");
+			}
+		});
 	} 
 	
 	//Make Item Links
@@ -270,87 +240,31 @@ $('#additemform').bind('pageinit', function(){
 		}
 	}
 	
-/*	
-	
-	function validate(e){
-		//Define the elements we want to check
-		var getGroup = $("groups");
-		var getFname = $("fname");
-		var getLname = $("lname");
-		var getGift = $("gift");
-		
-		//Reset Error Messages
-		errMsg.html = "";
-		getGroup.css("border","1px solid black");
-		getFname.css("border","1px solid black");
-		getLname.css("border","1px solid black");
-		getGift.css("border","1px solid black");
-		
-		//Get error messages
-		var messageAry = [];
-		//Group validation
-		if(getGroup.val() === "--Choose A Group--"){
-			var groupError = "Please choose a group.";
-			getGroup.css("border","1px solid red");
-			messageAry.push(groupError);
-		}
-		
-		//First Name Validation
-		if(getFname.val() === ""){
-			var fNameError = "Please enter a first name.";
-			getFname.css("border","1px solid red");
-			messageAry.push(fNameError);
-		}
-		
-		//Last Name Validation
-		if(getLname.val() === ""){
-			var lNameError = "Please enter a last name.";
-			getLname.css("border","1px solid red");
-			messageAry.push(lNameError);
-		}
-		
-		//Gift Validation
-		if(getGift.val() === ""){
-			var giftError = "Please a gift.";
-			getGift.css("border","1px solid red");
-			messageAry.push(giftError);
-		}
-		
-		//If there were errors display them on the screen
-		if(messageAry.length >= 1){
-			for(var i=0, j=messageAry.length; i < j; i++){
-				var txt = $("li");
-				txt.html = messageAry[i];
-				errMsg.append(txt);
-			}
-			e.preventDefault();
-			return false;
-		}else {
-			//If all is ok save data! Send the key value (which came from the editData function)
-			//Remember this key value was passed through the editSubmit event listener as a property.
-			storeData(this.key);
-		}
-	}
-	
-	
-	
-	 //Variable Defaults
-	var contactGroups = ["--Choose A Group--", "Family", "Non-Family"],
-		purchaseVaule,
-		errMsg = $("errors");
-	;
-	makeCats();
-	
-	*/
-
+    aiform.validate({
+        invalidHandler: function(form, validator){
+            aierrorslink.click();
+            var html = '';
+            for(var key in validator.submitted){
+                var label = $('label[for^="'+ key +'"]').not('[generated]');
+                var legend = label.closest('fieldset').find('.ui-controlgroup-label');
+                var fieldName = legend.length ? legend.text() : label.text();
+                html += '<li>'+ fieldName +'</li>';
+            };
+            $("#additemerrors ul").html(html);
+        },
+        submitHandler: function(){
+            storeData();
+        }
+    });
+    
 	//Set Link & Submit Click Events
 	var displayLink =  $("#displayLink");
-	displayLink.bind("click", getData);
+		displayLink.bind("click", getData);
 	var clearLink = $("#clear");
-	clearLink.bind("click", clearLocal); 
+		clearLink.bind("click", clearLocal); 
 	var save = $("#submit");
-//	save.bind("click", validate);
-
-
+	//	save.bind("click", validate);
+	
+});
 
 
