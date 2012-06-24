@@ -1,7 +1,59 @@
 $(function(){
 	console.log("I am ready");
 	
-    
+	$.ajax({
+		"url": "_view/gifts",
+		"dataType": "json",
+		"success": function(data){
+			$.each(data.rows, function(index, gift){
+				var group = gift.value.group[1]; 
+				var fname = gift.value.fname[1];
+				var lname = gift.value.lname[1];
+				var giftx = gift.value.gift[1];	
+				var quantity = gift.value.quantity[1];
+				var purchase = gift.value.purchase[1];
+				var buydate = gift.value.buydate[1];
+				var notes = gift.value.notes[1];  
+				$(''+
+                        '<ul>' +
+                        '<li>'+ 'Group: ' + group + '</li>' +
+                        '<li>'+ 'Name: ' + fname + " " + lname +'</li>'+
+                        '<li>'+ 'Gift: ' + giftx +'</li>'+	
+                        '<li>'+ 'Quantity: ' + quantity +'</li>'+
+                        '<li>'+ 'Purchase: ' + purchase +'</li>'+
+                        '<li>'+ 'Buy Date: ' + buydate +'</li>'+
+                        '<li>'+ 'Notes: ' + notes +'</li>'+ 
+                        '</ul>'	+ '<br />'
+                     ).appendTo('#giftlist');
+				console.log(data);
+				
+			});
+			$("#giftlist").listview("refresh");
+		}
+	});
+ 
+
+    var aiform = $('#additemform'),
+        aierrorslink = $('#aierrorslink')
+    ;
+
+    aiform.validate({
+        invalidHandler: function(form, validator){
+            aierrorslink.click();
+            var html = '';
+            for(var key in validator.submitted){
+                var label = $('label[for^="'+ key +'"]').not('[generated]');
+                var legend = label.closest('fieldset').find('.ui-controlgroup-label');
+                var fieldName = legend.length ? legend.text() : label.text();
+                html += '<li>'+ fieldName +'</li>';
+            };
+            $("#additemerrors ul").html(html);
+        },
+        submitHandler: function(){
+            storeData();
+        }
+    });
+
 
 	
 	//Find the value of selected radio button
@@ -75,14 +127,13 @@ $(function(){
 		
 		var makeList = $("ul");
 		makeDiv.append(makeList);
-		$("body").append(makeDiv);
+//		document.body.append(makeDiv);
 		$("items").css("display","block");
 		
 		for(var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = $("li");
 			var linksLi = $("li");
 			makeList.append(makeLi);
-			
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			
@@ -96,7 +147,7 @@ $(function(){
 				var makeSubLi = $("li");
 				makeSubList.append(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubLi.html(optSubText);
+				makeSubLi.append(optSubText);
 				makeSubList.append(linksLi);
 			}
 			makeItemLinks(localStorage.key(i), linksLi);  //Create our edit and delete buttons/links for each item in Local Storage
@@ -119,41 +170,11 @@ $(function(){
 /*		for(var n in json) {
 			var id = Math.floor(Math.random()*10000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
-		} */ //Causes an error
-		$.ajax({
-			"url": "_view/gifts",
-			"dataType": "json",
-			"success": function(data){
-				$.each(data.rows, function(index, gift){
-					var group = gift.value.group[1]; 
-					var fname = gift.value.fname[1];
-					var lname = gift.value.lname[1];
-					var giftx = gift.value.gift[1];	
-					var quantity = gift.value.quantity[1];
-					var purchase = gift.value.purchase[1];
-					var buydate = gift.value.buydate[1];
-					var notes = gift.value.notes[1];  
-					$(''+
-	                        '<ul>' +
-	                        '<li>'+ 'Group: ' + group + '</li>' +
-	                        '<li>'+ 'Name: ' + fname + " " + lname +'</li>'+
-	                        '<li>'+ 'Gift: ' + giftx +'</li>'+	
-	                        '<li>'+ 'Quantity: ' + quantity +'</li>'+
-	                        '<li>'+ 'Purchase: ' + purchase +'</li>'+
-	                        '<li>'+ 'Buy Date: ' + buydate +'</li>'+
-	                        '<li>'+ 'Notes: ' + notes +'</li>'+ 
-	                        '</ul>'	+ '<br />'
-	                     ).appendTo('#giftlist');
-					console.log(data);
-					
-				});
-				$("#giftlist").listview("refresh");
-			}
-		});
+		} */
 	} 
 	
 	//Make Item Links
-	//Create the edit and delete links for each stored item when displayed
+	//Creat the edit and delete links for each stored item when displayed
 	function makeItemLinks(key, linksLi){
 		
 		//add edit single item link
@@ -238,34 +259,16 @@ $(function(){
 			return false;
 		}
 	}
-	var aiform = $('#additemform');
-    var aierrorslink = $('#aierrorslink');
 	
-    aiform.validate({
-        invalidHandler: function(form, validator){
-            aierrorslink.click();
-            var html = '';
-            for(var key in validator.submitted){
-                var label = $('label[for^="'+ key +'"]').not('[generated]');
-                var legend = label.closest('fieldset').find('.ui-controlgroup-label');
-                var fieldName = legend.length ? legend.text() : label.text();
-                html += '<li>'+ fieldName +'</li>';
-            };
-            $("#additemerrors ul").html(html);
-        },
-        submitHandler: function(){
-            storeData();
-        }
-    });
-    
+
 	//Set Link & Submit Click Events
 	var displayLink =  $("#displayLink");
-		displayLink.bind("click", getData);
+	displayLink.bind("click", getData);
 	var clearLink = $("#clear");
-		clearLink.bind("click", clearLocal); 
+	clearLink.bind("click", clearLocal); 
 	var save = $("#submit");
-	//Notworking	save.bind("click", validate);
-	
+//	save.bind("click", validate);
+
 });
 
 
