@@ -24,7 +24,7 @@ $("#home").bind('pageinit', function(){
                         '</ul>'	+ '<br />'
                      ).appendTo('#giftlist');
 			});
-//			$("#giftlist").listview("refresh");
+			$("#giftlist").listview("refresh");
 		}
 	});
 });
