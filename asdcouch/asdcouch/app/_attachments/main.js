@@ -300,5 +300,7 @@ $("#home").bind('pageinit', function(){
 	var clearLink = $("#clear");
 	clearLink.bind("click", clearLocal); 
 	var save = $("#submit");
-//	save.bind("click", validate);
+	$("#submit").bind('click',function () {
+		storeData();
+	});
 });
