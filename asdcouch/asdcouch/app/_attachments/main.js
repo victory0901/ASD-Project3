@@ -114,7 +114,7 @@ $("#home").bind('pageinit', function(){
 		}
 	}
 	
-	function storeData(key){
+	function storeData(key, rev){
 	//If there is no key, this means this is a brand new item and we need a new key.
 	if(!key){
 		var id  		= Math.floor(Math.random()*10000001);
@@ -125,7 +125,9 @@ $("#home").bind('pageinit', function(){
 		id = key;
 	}
 	getSelectedRadio();
-	var item		= {};
+	var item			= {};
+		item._id		= key;
+		item._rev		= rev;
 		item.group		= ["Group:", $("groups").val()];
 		item.fname		= ["First Name:", $("fname").val()];
 		item.lname		= ["Last Name:", $("lname").val()];
@@ -136,8 +138,11 @@ $("#home").bind('pageinit', function(){
 		item.notes		= ["Notes:", $("notes").val()];
 		
 		//Save data into Local Storage: Use Stringify to convert our object
-		localStorage.setItem(id, JSON.stringify(item));
-		alert("Contact Saved!");
+		$.couch.db('asdproject').saveDoc(item, {
+        	success: function(data) {
+                alert("Gift saved.");
+        	}
+        });
 		
 	}
 	
